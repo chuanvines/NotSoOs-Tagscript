@@ -7,86 +7,44 @@ os.makedirs(base + "apps", exist_ok=True)
 os.makedirs(base + "files", exist_ok=True)
 os.makedirs(base + "system", exist_ok=True)
 
-# Create filesystem index if it doesn't exist
 fs_path = base + "system/fs.json"
 if not os.path.exists(fs_path):
     fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
     with open(fs_path, "w") as f:
         json.dump(fs, f)
-print("NotSoOs initialized!")
-}
-{set:os_state|home}
-{set:os_user|{usernick}}
-{pagejson:[
-  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":"🖥️ NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":"📁 Files","value":"Manage your files"}]}}
-]}
-
-{python:
-import os
-import json
-
-base = "/home/notsocoder/notsoos/"
-with open(base + "system/fs.json") as f:
-    fs = json.load(f)
+else:
+    with open(fs_path) as f:
+        fs = json.load(f)
 
 files_list = "\n".join([f"- {k} ({v['size']} bytes)" for k,v in fs.get("files", {}).items()])
 if not files_list:
     files_list = "No files yet"
 
-print(files_list)
-}
-
-{python:
-import os
-import json
-
-base = "/home/notsocoder/notsoos/"
-with open(base + "system/fs.json") as f:
-    fs = json.load(f)
-
 used = fs.get("total_size", 0)
 max_s = 1500000000
 free = max_s - used
 
-print(f"Storage: {used/1000000:.2f}MB / {max_s/1000000:.2f}MB")
-print(f"Free: {free/1000000:.2f}MB")
-print(f"Files: {len(fs.get('files', {}))}")
+print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/1000000:.2f}MB / {max_s/1000000:.2f}MB', 'free': f'{free/1000000:.2f}MB', 'count': len(fs.get('files', {}))})}")
 }
+
+{set:os_data|{substring:{python}||}}
+{set:os_json|{substring:{get:os_data}|14||}}
+{set:files|{traversejson:files|{get:os_json}}}
+{set:storage|{traversejson:storage|{get:os_json}}}
+{set:free|{traversejson:free|{get:os_json}}}
+{set:count|{traversejson:count|{get:os_json}}}
 
 {pagejson:[
-  {"content":"System Dashboard","embed":{"title":"NotSoOs","description":"Choose an action"},"files":[]}
+  {
+    "content": "Welcome to NotSoOs, {usernick}!",
+    "embed": {
+      "title": "🖥️ NotSoOs v1.0",
+      "description": "Your virtual operating system",
+      "color": 5793266,
+      "fields": [
+        {"name": "💾 Storage", "value": "{get:storage}\nFree: {get:free}", "inline": true},
+        {"name": "📁 Files ({get:count})", "value": "{get:files}", "inline": false}
+      ]
+    }
+  }
 ]}
-
-{python:
-import os
-import json
-
-base = "/home/notsocoder/notsoos/"
-
-def save_file(name, content):
-    with open(base + "system/fs.json") as f:
-        fs = json.load(f)
-    
-    content_bytes = len(content.encode())
-    if fs["total_size"] + content_bytes > fs["max_size"]:
-        print("ERROR: Storage full!")
-        return
-    
-    filepath = base + "files/" + name
-    with open(filepath, "w") as f:
-        f.write(content)
-    
-    fs["files"][name] = {"size": content_bytes, "path": filepath}
-    fs["total_size"] += content_bytes
-    
-    with open(base + "system/fs.json", "w") as f:
-        json.dump(fs, f)
-    print(f"Saved {name}")
-
-save_file("readme.txt", "Welcome to NotSoOs!")
-}
-
-{set:app_name|MyApp}
-{set:app_state|main}
-
-{if:{get:app_state}|=|main|then:{pagejson:[{"content":"{get:app_name}","embed":{"title":"{get:app_name}","description":"App content here"}}]}|else:App error}
