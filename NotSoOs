@@ -1,141 +1,51 @@
-{
-  "name": "NotSoOs v1.0",
-  "version": "1.0.0",
-  "type": "operating_system",
-  "platform": "NotBot Tagscript",
-  "storage": {
-    "total_gb": 1.5,
-    "total_mb": 1536,
-    "used_mb": 512,
-    "free_mb": 1024
-  },
-  "system_info": {
-    "os_name": "NotSoOs",
-    "version": "1.0.0",
-    "build": "v1.0-release",
-    "kernel": "NotSoOs-kernel-1.0",
-    "arch": "NotBot-64"
-  },
-  "start_menu": {
-    "pagejson": {
-      "name": "Welcome to NotSoOs V1.0",
-      "type": "welcome_page",
-      "description": "Welcome to your new operating system",
-      "content": {
-        "title": "Welcome to NotSoOs V1.0",
-        "subtitle": "Your lightweight operating system powered by NotBot Tagscript",
-        "message": "Get started with your new system. Explore the preinstalled applications and enjoy a seamless experience!",
-        "features": [
+{pagejson: [
+    {
+      "content": "# 🖥️ **NotSoOs v1.0**\n\nWelcome to NotSoOs!\n\n**Storage:** 1.5 GB used\n**Status:** Running\n\nSelect an app from the taskbar below.",
+      "embed": {
+        "title": "NotSoOs v1.0 - Desktop",
+        "color": 5793266,
+        "fields": [
           {
-            "name": "Files Manager",
-            "icon": "📁",
-            "description": "Browse and manage your files efficiently"
+            "name": "📁 Files",
+            "value": "Browse your files",
+            "inline": true
           },
           {
-            "name": "Clock",
-            "icon": "🕐",
-            "description": "Keep track of time with alarms and stopwatch"
+            "name": "🕐 Clock",
+            "value": "View current time",
+            "inline": true
           },
           {
-            "name": "Storage Space",
-            "icon": "💾",
-            "description": "Monitor your 1.5GB storage capacity"
+            "name": "💾 Storage",
+            "value": "1.5 GB / 8 GB used",
+            "inline": true
           }
         ],
-        "quick_stats": {
-          "total_storage": "1.5 GB",
-          "used_storage": "512 MB",
-          "free_storage": "1024 MB",
-          "preinstalled_apps": 3
-        },
-        "actions": [
-          {
-            "label": "Explore Apps",
-            "action": "open_apps"
-          },
-          {
-            "label": "Check Storage",
-            "action": "open_storage"
-          },
-          {
-            "label": "Dismiss",
-            "action": "close_welcome"
-          }
-        ]
-      },
-      "theme": {
-        "background_color": "#0f0f0f",
-        "text_color": "#ffffff",
-        "accent_color": "#00ff00"
-      },
-      "show_on_startup": true
-    }
-  },
-  "preinstalled_apps": [
-    {
-      "id": 1,
-      "name": "Files",
-      "version": "1.0.0",
-      "type": "system",
-      "description": "File manager for browsing and managing files",
-      "size_mb": 45,
-      "status": "installed",
-      "features": [
-        "Browse directories",
-        "Create folders",
-        "View file properties",
-        "File operations"
-      ]
+        "footer": {
+          "text": "NotSoOs v1.0"
+        }
+      }
     },
     {
-      "id": 2,
-      "name": "Clock",
-      "version": "1.0.0",
-      "type": "system",
-      "description": "System clock and time management",
-      "size_mb": 12,
-      "status": "installed",
-      "features": [
-        "Display current time",
-        "Timezones",
-        "Alarms",
-        "Stopwatch"
-      ]
+      "content": "# 📁 **Files App**\n\n```\nC:\\\n├── Documents\\\n│   ├── readme.txt\n│   └── notes.txt\n├── Pictures\\\n│   └── wallpaper.png\n├── Downloads\\\n└── System\\\n    └── config.sys\n```\n\n**Total Files:** 5\n**Folders:** 4",
+      "embed": {
+        "title": "NotSoOs v1.0 - Files",
+        "color": 3447003
+      }
     },
     {
-      "id": 3,
-      "name": "Storage Space",
-      "version": "1.0.0",
-      "type": "system",
-      "description": "Storage management and disk usage viewer",
-      "size_mb": 8,
-      "status": "installed",
-      "features": [
-        "View disk usage",
-        "Storage analytics",
-        "Cache management",
-        "Available space indicator"
-      ]
+      "content": "# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unixs}:F>\n\n<t:{unixs}:t>\n\n<t:{unixs}:R>",
+      "embed": {
+        "title": "NotSoOs v1.0 - Clock",
+        "color": 15844367
+      }
+    },
+    {
+      "content": "# 💾 **Storage Space**\n\n```\n╔══════════════════════════════╗\n║  STORAGE OVERVIEW            ║\n╠══════════════════════════════╣\n║  Used:     1.5 GB            ║\n║  Free:     6.5 GB            ║\n║  Total:    8.0 GB            ║\n╠══════════════════════════════╣\n║  [████████░░░░░░░░░░] 18.75% ║\n╚══════════════════════════════╝\n\nBreakdown:\n- System:    0.8 GB\n- Apps:      0.4 GB\n- User Data: 0.3 GB\n```",
+      "embed": {
+        "title": "NotSoOs v1.0 - Storage",
+        "color": 15105570
+      }
     }
-  ],
-  "system_apps": {
-    "total_installed": 3,
-    "total_size_mb": 65,
-    "available_for_apps": 1471
-  },
-  "boot_sequence": [
-    "Initializing NotSoOs kernel...",
-    "Loading system files...",
-    "Starting preinstalled applications...",
-    "Displaying welcome page...",
-    "System ready!"
-  ],
-  "permissions": {
-    "user_level": "standard",
-    "admin_level": "restricted"
-  },
-  "compatibility": {
-    "notbot_version": "latest",
-    "tagscript_version": "3.0+"
-  }
+  ]
 }
