@@ -34,7 +34,7 @@
       }
     },
     {
-      "content": "{set:runapps|storage}# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unixs}:F>\n\n<t:{unixs}:t>\n\n<t:{unixs}:R>",
+      "content": "{set:runapps|{arg:0}}# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unixs}:F>\n\n<t:{unixs}:t>\n\n<t:{unixs}:R>",
       "embed": {
         "title": "NotSoOs v1.05 - Clock",
         "color": 15844367
