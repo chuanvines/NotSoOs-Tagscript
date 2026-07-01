@@ -29,10 +29,10 @@ print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/10000
 
 {set:os_data|{substring:{python}||}}
 {set:os_json|{substring:{get:os_data}|14||}}
-{set:files|{jsonparse:{get:os_json}|files}}
-{set:storage|{jsonparse:{get:os_json}|storage}}
-{set:free|{jsonparse:{get:os_json}|free}}
-{set:count|{jsonparse:{get:os_json}|count}}
+{set:files|{traversejson:files|{get:os_json}}}
+{set:storage|{traversejson:storage|{get:os_json}}}
+{set:free|{traversejson:free|{get:os_json}}}
+{set:count|{traversejson:count|{get:os_json}}}
 
 {pagejson:[
   {
