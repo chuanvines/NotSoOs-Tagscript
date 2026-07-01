@@ -1,4 +1,4 @@
-{if:{argslen}|=|testcode|then:{eval:{arg:1}}|else:{pagejson: [
+{if:{arg:0}|=|testcode|then:{eval:{arg:1}}|else:{pagejson: [
     {
       "content": "# 🖥️ **NotSoOs v1.05**\n\nWelcome to NotSoOs!\n\n**Storage:** 1.5 GB used\n**Status:** Running\n\nSelect an app from the taskbar below.",
       "embed": {
