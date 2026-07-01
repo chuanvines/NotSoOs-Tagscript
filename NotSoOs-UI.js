@@ -37,13 +37,15 @@ console.log(JSON.stringify({
           "type": 2,
           "style": 2,
           "label": "🕐 Clock",
-          "custom_id": "notsoos_clock_exec"
+          "custom_id": "notsoos_clock_exec",
+          "run": "{text:https://raw.githubusercontent.com/chuanvines/NotSoOs-Tagscript/refs/heads/main/clock.txt}"
         },
         {
           "type": 2,
           "style": 2,
           "label": "📋 Files App",
-          "custom_id": "notsoos_filesapp_exec"
+          "custom_id": "notsoos_filesapp_exec",
+          "run": "{text:https://raw.githubusercontent.com/chuanvines/NotSoOs-Tagscript/refs/heads/main/files.txt}"
         }
       ]
     },
