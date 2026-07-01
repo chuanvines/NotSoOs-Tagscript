@@ -44,9 +44,7 @@ print(json.dumps({'files': files_list, 'storage': f'{used/1000000:.2f}MB / {max_
         {"name": "💾 Storage", "value": "{get:storage}\nFree: {get:free}", "inline": true},
         {"name": "📁 Files ({get:count})", "value": "{get:files}", "inline": false}
       ]
-    }
-        ]
-      }
-    ]
+    },
+    "components": {js:{text:https://raw.githubusercontent.com/chuanvines/NotSoOs-Tagscript/main/NotSoOs-UI.js}}
   }
 ]}
