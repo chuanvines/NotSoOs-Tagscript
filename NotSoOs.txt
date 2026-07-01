@@ -42,6 +42,3 @@ Your virtual operating system
 Free: {get:free}
 
 📁 **Files ({get:count})**
-{get:files}
-
-{js:{text:https://github.com/chuanvines/NotSoOs-Tagscript/blob/main/NotSoOs-UI.js}}
