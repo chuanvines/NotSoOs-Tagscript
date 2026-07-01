@@ -7,16 +7,20 @@ os.makedirs(base + "apps", exist_ok=True)
 os.makedirs(base + "files", exist_ok=True)
 os.makedirs(base + "system", exist_ok=True)
 
-fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
-with open(base + "system/fs.json", "w") as f:
-    json.dump(fs, f)
+# Create filesystem index if it doesn't exist
+fs_path = base + "system/fs.json"
+if not os.path.exists(fs_path):
+    fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
+    with open(fs_path, "w") as f:
+        json.dump(fs, f)
 print("NotSoOs initialized!")
 }
 {set:os_state|home}
 {set:os_user|{usernick}}
 {pagejson:[
-  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":"🖥️ NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":"📁 Files","value":"Manage your files","inline":true},{"name":"⚙️ System","value":"View system info","inline":true},{"name":"💻 Terminal","value":"Run TagScript commands","inline":true}]},"files":[]}
+  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":"🖥️ NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":"📁 Files","value":"Manage your files"}]}}
 ]}
+
 {python:
 import os
 import json
@@ -31,39 +35,28 @@ if not files_list:
 
 print(files_list)
 }
-Terminal Output: No output yet
 
-{py:import os
+{python:
+import os
 import json
 
 base = "/home/notsocoder/notsoos/"
-os.makedirs(base + "apps", exist_ok=True)
-os.makedirs(base + "files", exist_ok=True)
-os.makedirs(base + "system", exist_ok=True)
-
-fs_path = base + "system/fs.json"
-
-# Create filesystem index if it doesn't exist
-if not os.path.exists(fs_path):
-    fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
-    with open(fs_path, "w") as f:
-        json.dump(fs, f)
-    print("NotSoOs initialized!")
-
-# Now read it
-with open(fs_path) as f:
+with open(base + "system/fs.json") as f:
     fs = json.load(f)
 
-files_list = "\n".join([f"- {k} ({v['size']} bytes)" for k,v in fs.get("files", {}).items()])
-if not files_list:
-    files_list = "No files yet"
+used = fs.get("total_size", 0)
+max_s = 1500000000
+free = max_s - used
 
-print(files_list)
+print(f"Storage: {used/1000000:.2f}MB / {max_s/1000000:.2f}MB")
+print(f"Free: {free/1000000:.2f}MB")
+print(f"Files: {len(fs.get('files', {}))}")
 }
 
 {pagejson:[
-  {"content":"System Dashboard","embed":{"title":"NotSoOs","description":"Choose an action"},"files":[],"components":[{"type":1,"components":[{"type":2,"style":1,"label":"Files","custom_id":"os_files"},{"type":2,"style":2,"label":"Terminal","custom_id":"os_terminal"},{"type":2,"style":4,"label":"Shutdown","custom_id":"os_shutdown"}]}]}
+  {"content":"System Dashboard","embed":{"title":"NotSoOs","description":"Choose an action"},"files":[]}
 ]}
+
 {python:
 import os
 import json
@@ -92,6 +85,7 @@ def save_file(name, content):
 
 save_file("readme.txt", "Welcome to NotSoOs!")
 }
+
 {set:app_name|MyApp}
 {set:app_state|main}
 
