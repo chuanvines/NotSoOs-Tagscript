@@ -52,6 +52,12 @@ print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/10000
         "components": [
           {
             "type": 2,
+            "style": 3,
+            "label": "🚀 Start",
+            "custom_id": "notsoos_start"
+          },
+          {
+            "type": 2,
             "style": 1,
             "label": "📂 File Manager",
             "custom_id": "notsoos_files"
