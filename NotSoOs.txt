@@ -1,0 +1,93 @@
+{python:
+import os
+import json
+
+base = "/home/notsocoder/notsoos/"
+os.makedirs(base + "apps", exist_ok=True)
+os.makedirs(base + "files", exist_ok=True)
+os.makedirs(base + "system", exist_ok=True)
+
+# Create filesystem index
+fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
+with open(base + "system/fs.json", "w") as f:
+    json.dump(fs, f)
+print("NotSoOs initialized!")
+}
+{set:os_state|home}
+{set:os_user|{username}}
+{pagejson:[
+  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":":desktop: NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":":file_folder: Files","value":"Manage your files","inline":true},{"name":":gear: System","value":"View system info","inline":true},{"name":":computer: Terminal","value":"Run TagScript commands","inline":true}]},"files":[]}
+]}
+{python:
+import os
+import json
+
+base = "/home/notsocoder/notsoos/"
+with open(base + "system/fs.json") as f:
+    fs = json.load(f)
+
+files_list = "\n".join([f"- {k} ({v['size']} bytes)" for k,v in fs.get("files", {}).items()])
+if not files_list:
+    files_list = "No files yet"
+
+print(files_list)
+}
+{set:term_output|{args}}
+Terminal Output: {get:term_output}
+
+{python:
+import os
+import json
+
+base = "/home/notsocoder/notsoos/"
+with open(base + "system/fs.json") as f:
+    fs = json.load(f)
+
+used = fs.get("total_size", 0)
+max_s = 1500000000
+free = max_s - used
+
+print(f"Storage: {used/1000000:.2f}MB / {max_s/1000000:.2f}MB")
+print(f"Free: {free/1000000:.2f}MB")
+print(f"Files: {len(fs.get('files', {}))}")
+}
+{pagejson:[
+  {"content":"System Dashboard","embed":{"title":"NotSoOs","description":"Choose an action"},"files":[],"components":[{"type":1,"components":[{"type":2,"style":1,"label":"Files","custom_id":"os_files"},{"type":2,"style":2,"label":"Terminal","custom_id":"os_terminal"},{"type":2,"style":4,"label":"Shutdown","custom_id":"os_shutdown"}]}]}
+]}
+{python:
+import os
+import json
+
+base = "/home/notsocoder/notsoos/"
+
+def save_file(name, content):
+    with open(base + "system/fs.json") as f:
+        fs = json.load(f)
+    
+    content_bytes = len(content.encode())
+    if fs["total_size"] + content_bytes > fs["max_size"]:
+        print("ERROR: Storage full!")
+        return
+    
+    filepath = base + "files/" + name
+    with open(filepath, "w") as f:
+        f.write(content)
+    
+    fs["files"][name] = {"size": content_bytes, "path": filepath}
+    fs["total_size"] += content_bytes
+    
+    with open(base + "system/fs.json", "w") as f:
+        json.dump(fs, f)
+    print(f"Saved {name}")
+
+# Example usage
+save_file("readme.txt", "Welcome to NotSoOs!")
+}
+{set:app_name|MyApp}
+{set:app_state|main}
+
+{if:{get:app_state}|=|main|then:
+{pagejson:[{"content":"{get:app_name}","embed":{"title":"{get:app_name}","description":"App content here"}}]}
+|else:
+App error
+}
