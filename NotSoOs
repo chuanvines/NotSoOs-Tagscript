@@ -1,1 +1,85 @@
-Make a NotSoOs v1.0 , pre installed apps: files, clock , storage space: 1.5gb on notsobot tagscript
+{
+  "name": "NotSoOs v1.0",
+  "version": "1.0.0",
+  "type": "operating_system",
+  "platform": "NotBot Tagscript",
+  "storage": {
+    "total_gb": 1.5,
+    "total_mb": 1536,
+    "used_mb": 512,
+    "free_mb": 1024
+  },
+  "system_info": {
+    "os_name": "NotSoOs",
+    "version": "1.0.0",
+    "build": "v1.0-release",
+    "kernel": "NotSoOs-kernel-1.0",
+    "arch": "NotBot-64"
+  },
+  "preinstalled_apps": [
+    {
+      "id": 1,
+      "name": "Files",
+      "version": "1.0.0",
+      "type": "system",
+      "description": "File manager for browsing and managing files",
+      "size_mb": 45,
+      "status": "installed",
+      "features": [
+        "Browse directories",
+        "Create folders",
+        "View file properties",
+        "File operations"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clock",
+      "version": "1.0.0",
+      "type": "system",
+      "description": "System clock and time management",
+      "size_mb": 12,
+      "status": "installed",
+      "features": [
+        "Display current time",
+        "Timezones",
+        "Alarms",
+        "Stopwatch"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Storage Space",
+      "version": "1.0.0",
+      "type": "system",
+      "description": "Storage management and disk usage viewer",
+      "size_mb": 8,
+      "status": "installed",
+      "features": [
+        "View disk usage",
+        "Storage analytics",
+        "Cache management",
+        "Available space indicator"
+      ]
+    }
+  ],
+  "system_apps": {
+    "total_installed": 3,
+    "total_size_mb": 65,
+    "available_for_apps": 1471
+  },
+  "boot_sequence": [
+    "Initializing NotSoOs kernel...",
+    "Loading system files...",
+    "Starting preinstalled applications...",
+    "System ready!"
+  ],
+  "permissions": {
+    "user_level": "standard",
+    "admin_level": "restricted"
+  },
+  "compatibility": {
+    "notbot_version": "latest",
+    "tagscript_version": "3.0+"
+  }
+}
