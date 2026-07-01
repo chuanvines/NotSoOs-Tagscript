@@ -27,21 +27,21 @@
       }
     },
     {
-      "content": "# 📁 **Files App**\n\n```\nC:\\\n├── Documents\\\n│   ├── readme.txt\n│   └── notes.txt\n├── Pictures\\\n│   └── wallpaper.png\n├── Downloads\\\n└── System\\\n    └── config.sys\n```\n\n**Total Files:** 5\n**Folders:** 4",
+      "content": "# 📁 **Files App**\n\n```\nC:\\\n├── Documents\\\n│   ├── readme.txt\n│   └── notes.txt\n├── Pictures\\\n│   └── wallpaper.png\n├── Do[...]",
       "embed": {
         "title": "NotSoOs v1.05 - Files",
         "color": 3447003
       }
     },
     {
-      "content": "# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unixs}:F>\n\n<t:{unixs}:t>\n\n<t:{unixs}:R>",
+      "content": "{set:runapps|clock}# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unixs}:F>\n\n<t:{unixs}:t>\n\n<t:{unixs}:R>",
       "embed": {
         "title": "NotSoOs v1.05 - Clock",
         "color": 15844367
       }
     },
     {
-      "content": "# 💾 **Storage Space**\n\n```\n╔══════════════════════════════╗\n║  STORAGE OVERVIEW            ║\n╠══════════════════════════════╣\n║  Used:     1.5 GB            ║\n║  Free:     6.5 GB            ║\n║  Total:    8.0 GB            ║\n╠══════════════════════════════╣\n║  [████████░░░░░░░░░░] 18.75% ║\n╚══════════════════════════════╝\n\nBreakdown:\n- System:    0.8 GB\n- Apps:      0.4 GB\n- User Data: 0.3 GB\n```",
+      "content": "# 💾 **Storage Space**\n\n```\n╔══════════════════════════════╗\n║  STORAGE OVERVIEW            ║\n╠══[...]",
       "embed": {
         "title": "NotSoOs v1.05 - Storage",
         "color": 15105570
