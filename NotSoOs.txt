@@ -23,7 +23,7 @@ if not files_list:
 used = fs.get("total_size", 0)
 max_s = 1500000000
 free = max_s - used
-
+}
 
 {set:os_json|{python}}
 {set:files|{traversejson:files|{get:os_json}}}
