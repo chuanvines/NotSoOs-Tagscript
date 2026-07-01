@@ -16,6 +16,61 @@
     "kernel": "NotSoOs-kernel-1.0",
     "arch": "NotBot-64"
   },
+  "start_menu": {
+    "pagejson": {
+      "name": "Welcome to NotSoOs V1.0",
+      "type": "welcome_page",
+      "description": "Welcome to your new operating system",
+      "content": {
+        "title": "Welcome to NotSoOs V1.0",
+        "subtitle": "Your lightweight operating system powered by NotBot Tagscript",
+        "message": "Get started with your new system. Explore the preinstalled applications and enjoy a seamless experience!",
+        "features": [
+          {
+            "name": "Files Manager",
+            "icon": "📁",
+            "description": "Browse and manage your files efficiently"
+          },
+          {
+            "name": "Clock",
+            "icon": "🕐",
+            "description": "Keep track of time with alarms and stopwatch"
+          },
+          {
+            "name": "Storage Space",
+            "icon": "💾",
+            "description": "Monitor your 1.5GB storage capacity"
+          }
+        ],
+        "quick_stats": {
+          "total_storage": "1.5 GB",
+          "used_storage": "512 MB",
+          "free_storage": "1024 MB",
+          "preinstalled_apps": 3
+        },
+        "actions": [
+          {
+            "label": "Explore Apps",
+            "action": "open_apps"
+          },
+          {
+            "label": "Check Storage",
+            "action": "open_storage"
+          },
+          {
+            "label": "Dismiss",
+            "action": "close_welcome"
+          }
+        ]
+      },
+      "theme": {
+        "background_color": "#0f0f0f",
+        "text_color": "#ffffff",
+        "accent_color": "#00ff00"
+      },
+      "show_on_startup": true
+    }
+  },
   "preinstalled_apps": [
     {
       "id": 1,
@@ -72,6 +127,7 @@
     "Initializing NotSoOs kernel...",
     "Loading system files...",
     "Starting preinstalled applications...",
+    "Displaying welcome page...",
     "System ready!"
   ],
   "permissions": {
