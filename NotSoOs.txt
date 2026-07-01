@@ -46,3 +46,4 @@ print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/10000
         {"name": "📁 Files ({get:count})", "value": "{get:files}", "inline": false}
       ]
     }
+   }
