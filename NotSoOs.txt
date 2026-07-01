@@ -45,6 +45,42 @@ print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/10000
         {"name": "💾 Storage", "value": "{get:storage}\nFree: {get:free}", "inline": true},
         {"name": "📁 Files ({get:count})", "value": "{get:files}", "inline": false}
       ]
-    }
+    },
+    "components": [
+      {
+        "type": 1,
+        "components": [
+          {
+            "type": 2,
+            "style": 1,
+            "label": "📂 File Manager",
+            "custom_id": "notsoos_files"
+          },
+          {
+            "type": 2,
+            "style": 1,
+            "label": "⚙️ Settings",
+            "custom_id": "notsoos_settings"
+          },
+          {
+            "type": 2,
+            "style": 1,
+            "label": "📊 Stats",
+            "custom_id": "notsoos_stats"
+          }
+        ]
+      },
+      {
+        "type": 1,
+        "components": [
+          {
+            "type": 2,
+            "style": 2,
+            "label": "❌ Close",
+            "custom_id": "notsoos_close"
+          }
+        ]
+      }
+    ]
   }
 ]}
