@@ -27,8 +27,8 @@ free = max_s - used
 print(f"NOTSOOS_STATE:{json.dumps({'files': files_list, 'storage': f'{used/1000000:.2f}MB / {max_s/1000000:.2f}MB', 'free': f'{free/1000000:.2f}MB', 'count': len(fs.get('files', {}))})}")
 }
 
-{set:os_data|{substring:{python}||}}
-{set:os_json|{substring:{get:os_data}|14||}}
+{set:os_data|{python}}
+{set:os_json|{substring:{get:os_data}|14}}
 {set:files|{traversejson:files|{get:os_json}}}
 {set:storage|{traversejson:storage|{get:os_json}}}
 {set:free|{traversejson:free|{get:os_json}}}
