@@ -7,16 +7,15 @@ os.makedirs(base + "apps", exist_ok=True)
 os.makedirs(base + "files", exist_ok=True)
 os.makedirs(base + "system", exist_ok=True)
 
-# Create filesystem index
 fs = {"total_size": 0, "max_size": 1500000000, "files": {}}
 with open(base + "system/fs.json", "w") as f:
     json.dump(fs, f)
 print("NotSoOs initialized!")
 }
 {set:os_state|home}
-{set:os_user|{username}}
+{set:os_user|{usernick}}
 {pagejson:[
-  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":":desktop: NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":":file_folder: Files","value":"Manage your files","inline":true},{"name":":gear: System","value":"View system info","inline":true},{"name":":computer: Terminal","value":"Run TagScript commands","inline":true}]},"files":[]}
+  {"content":"Welcome to NotSoOs, {get:os_user}!","embed":{"title":"🖥️ NotSoOs v1.0","description":"Select an app to open:","color":5793266,"fields":[{"name":"📁 Files","value":"Manage your files","inline":true},{"name":"⚙️ System","value":"View system info","inline":true},{"name":"💻 Terminal","value":"Run TagScript commands","inline":true}]},"files":[]}
 ]}
 {python:
 import os
@@ -32,8 +31,7 @@ if not files_list:
 
 print(files_list)
 }
-{set:term_output|{args}}
-Terminal Output: {get:term_output}
+Terminal Output: No output yet
 
 {python:
 import os
@@ -80,14 +78,9 @@ def save_file(name, content):
         json.dump(fs, f)
     print(f"Saved {name}")
 
-# Example usage
 save_file("readme.txt", "Welcome to NotSoOs!")
 }
 {set:app_name|MyApp}
 {set:app_state|main}
 
-{if:{get:app_state}|=|main|then:
-{pagejson:[{"content":"{get:app_name}","embed":{"title":"{get:app_name}","description":"App content here"}}]}
-|else:
-App error
-}
+{if:{get:app_state}|=|main|then:{pagejson:[{"content":"{get:app_name}","embed":{"title":"{get:app_name}","description":"App content here"}}]}|else:App error}
