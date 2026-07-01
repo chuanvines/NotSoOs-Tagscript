@@ -33,12 +33,4 @@ print(json.dumps({'files': files_list, 'storage': f'{used/1000000:.2f}MB / {max_
 {set:free|{traversejson:free|{get:os_json}}}
 {set:count|{traversejson:count|{get:os_json}}}
 
-{paginate:1:
-{embed(title): 🖥️ NotSoOs v1.0}
-{embed(description): Your virtual operating system}
-{embed(color): 5793266}
-{embed(field): 💾 Storage|{get:storage}
-Free: {get:free}|true}
-{embed(field): 📁 Files ({get:count})|{get:files}|false}
-Welcome to NotSoOs, {usernick}!
-}
+{embedjson:{"title":"ðŸ–¥ï¸ NotSoOs v1.0","description":"Your virtual operating system","color":5793266,"fields":[{"name":"ðŸ’¾ Storage","value":"{get:storage}\nFree: {get:free}","inline":true},{"name":"ðŸ“ Files ({get:count})","value":"{get:files}","inline":false}],"footer":{"text":"Welcome to NotSoOs, {usernick}!"}}}
