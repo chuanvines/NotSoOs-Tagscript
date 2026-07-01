@@ -24,8 +24,6 @@ used = fs.get("total_size", 0)
 max_s = 1500000000
 free = max_s - used
 
-print(json.dumps({'files': files_list, 'storage': f'{used/1000000:.2f}MB / {max_s/1000000:.2f}MB', 'free': f'{free/1000000:.2f}MB', 'count': len(fs.get('files', {}))}, separators=(',', ':')))
-}
 
 {set:os_json|{python}}
 {set:files|{traversejson:files|{get:os_json}}}
