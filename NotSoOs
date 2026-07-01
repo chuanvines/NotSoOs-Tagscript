@@ -1,6 +1,6 @@
 {if:{arg:0}|=|desktop|
 {pagejson:[{
-"content":"# 🖥️ **NotSoOs v1.05**\n\nWelcome to NotSoOs!\n\n**Storage:** 1.5 GB used\n**Status:** Running\n\nSelect an app from the taskbar below.",
+"content":"# 🖥️ **NotSoOs v1.05** Welcome to NotSoOs! **Storage:** 1.5 GB used **Status:** Running Select an app from the taskbar below.",
 "embed":{
 "title":"NotSoOs v1.1 - Desktop",
 "color":5793266,
@@ -15,7 +15,7 @@
 
 |{if:{arg:0}|=|files|
 {pagejson:[{
-"content":"# 📁 **Files App**\n\n```\nC:\\\n├─ 📂 Documents\\\n│  ├─ 📄 readme.txt\n│  └─ 📄 notes.txt\n├─ 📂 Pictures\\\n│  └─ 🖼️ wallpaper.png\n├─ 📂 Downloads\\\n│  └─ 📦 setup.exe\n└─ 📂 Programs\\\n   └─ 📦 NotSoOs.exe\n```",
+"content":"# 📁 **Files App** C:\ ├─ 📂 Documents\ │  ├─ 📄 readme.txt │  └─ 📄 notes.txt ├─ 📂 Pictures\ │  └─ 🖼️ wallpaper.png ├─ 📂 Downloads\ │  └─ 📦 setup.exe └─ 📂 Programs\ └─ 📦 NotSoOs.exe",
 "embed":{
 "title":"NotSoOs v1.1 - Files",
 "color":3447003
@@ -24,7 +24,7 @@
 
 |{if:{arg:0}|=|clock|
 {pagejson:[{
-"content":"# 🕐 **Clock App**\n\nThe current time is displayed above using Discord's timestamp format.\n\n<t:{unix_seconds}:F>\n\n<t:{unix_seconds}:t>\n\n<t:{unix_seconds}:R>",
+"content":"# 🕐 **Clock App** The current time is displayed above using Discord's timestamp format. <t:{unix_seconds}:F> <t:{unix_seconds}:t> <t:{unix_seconds}:R>",
 "embed":{
 "title":"NotSoOs v1.1 - Clock",
 "color":15844367
@@ -33,7 +33,7 @@
 
 |{if:{arg:0}|=|storage|
 {pagejson:[{
-"content":"# 💾 **Storage Space**\n\n```\n╔════════════════════════════════════════════╗\n║ STORAGE OVERVIEW                           ║\n╠════════════════════════════════════════════╣\n║ Total Space: 8 GB                          ║\n║ Used Space:  1.5 GB (18.75%)               ║\n║ Free Space:  6.5 GB (81.25%)               ║\n╚════════════════════════════════════════════╝\n```",
+"content":"# 💾 **Storage Space** ╔════════════════════════════════════════════╗ ║ STORAGE OVERVIEW                           ║ ╠════════════════════════════════════════════╣ ║ Total Space: 8 GB                          ║ ║ Used Space:  1.5 GB (18.75%)               ║ ║ Free Space:  6.5 GB (81.25%)               ║ ╚════════════════════════════════════════════╝",
 "embed":{
 "title":"NotSoOs v1.1 - Storage",
 "color":15105570
@@ -52,4 +52,4 @@
 
 |**App not found.** Available apps: `desktop`, `files`, `clock`, `storage`, `testcode`
 
-}}}}}}}}}}
+}}
