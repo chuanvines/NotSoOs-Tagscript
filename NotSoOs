@@ -1,52 +1,72 @@
-{if:{arg:0}|=|clock|then:{set:clockimage|{mediascripturl:
-tti time 40 500 black {jsonify:{py:import datetime
+{if:{arg:0}|=|clock|
+then:{embedjson:{
+"title":"Clock",
+"description":"<t:{unix_seconds}:F> <t:{unix_seconds}:t>",
+"color":3447003
+}}
+}
 
-def unix_to_clock_emoji(unix_ts):
-    dt = datetime.datetime.fromtimestamp(unix_ts)
-    hour = dt.hour % 12
-    minute = dt.minute
-    base = 0x1F550
-    position = hour * 2 + (1 if minute >= 30 else 0)
+|{if:{arg:0}|=|thispc|
+then:{embedjson:{
+"title":"This PC",
+"description":"💾 Storage Information Total Storage: 8.5 GB Used Storage: 1.5 GB (18%) Free Storage: 7.0 GB (82%)",
+"color":3447003
+}}
+}
 
-    return chr(base + position)
+|{if:{arg:0}|=||
+then:{embedjson:{
+"title":"NotSoOs V1.0",
+"description":"🕒 Clock  📁 Files 🖥️ {usernick}",
+"color":3447003
+}}
+}
 
-print(unix_to_clock_emoji({unixs}))
+|{if:{arg:0}|=|menu|
+then:{embedjson:{
+"title":"NotSoOs V1.0",
+"description":"🕒 Clock  📁 Files 🖥️ {usernick}",
+"color":3447003
+}}
+}
+
+|{if:{arg:0}|=|files|
+then:{embedjson:{
+"title":"Files",
+"description":"Files hi.txt abc.txt - Repository documentation",
+"color":3447003
+}}
+}
+
+|{if:{arg:0}|=|open|
+then:{if:{arg:1}|=|hi.txt|
+then:{embedjson:{
+"title":"hi.txt",
+"description":"hello",
+"color":3447003
+}}
 }
 }
-resize time 1920 1080
-rotate time 180
-render time
-}}}}
 
-{if:{arg:0}|=|thispc|then:{set:storageinfo|{py:
-import shutil
+|{if:{arg:0}|=|open|
+then:{if:{arg:1}|=|abc.txt|
+then:{embedjson:{
+"title":"abc.txt",
+"description":"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z",
+"color":3447003
+}}
+}
+}
 
-total, used, free = shutil.disk_usage("/")
-total_gb = 8.5
-used_gb = used / (1024**3) / 205
-free_gb = free / (1024**3) / 205
-usage_percent = (used_gb / total_gb) * 100
+|{if:{arg:0}|=|tagscript|
+then:{embedjson:{
+"title":"TagScript",
+"description":"{eval:{args:1}}",
+"color":3447003
+}}
+}
 
-print(f"{total_gb:.1f}|{used_gb:.1f}|{free_gb:.1f}|{usage_percent:.1f}")
-}}}}
-
-{if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥️ {usernick}","color":3447003}}}
-
-{if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥️ {usernick}","color":3447003}}}
-
-{if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image":{"url":"{get:clockimage}"}}}}
-
-{if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"Files\n\n**hi.txt**\n**abc.txt** - Repository documentation","color":3447003}}}
-
-{if:{arg:0}|=|open|then:{if:{arg:1}|=|hi.txt|then:{embedjson:{"title":"hi.txt","description":"hello","color":3447003}}}}
-
-{if:{arg:0}|=|open|then:{if:{arg:1}|=|abc.txt|then:{embedjson:{"title":"abc.txt","description":"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z","color":3447003}}}}
-
-{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {substring:{get:storageinfo}|0|{indexof:|{get:storageinfo}}} GB\n**Used Storage:** {substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}} GB\n**Free Storage:** {substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}}} GB\n**Usage:** {substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}%","color":3447003}}}
-
-{if:{arg:0}|=|tagscript|then:{embedjson:{"title":"TagScript","description":"{eval:{args:1}}","color":3447003}}}
-
-{componentjson:
+|{componentjson:
 {
   "type":1,
   "components":[
