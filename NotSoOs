@@ -23,6 +23,8 @@ render time
 
 {if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image": {"url": "{get:clockimage}"}}}}
 
+{if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"📁 Repository Files\n\n**NotSoOs** - Main tag script file\n**README.md** - Repository documentation","color":3447003}}}
+
 {componentjson:
 {
   "type": 1,
