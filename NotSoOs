@@ -1,7 +1,6 @@
 {set:unix|{unix}}
 {get:sec|{math:({unix}-{get:unix})/1000}}
-
-{if:{get:sec}|=|3|then:{if:{arg:0}|=|clock|then:{set:clockimage|{mediascripturl:
+{if:{arg:0}|=|clock|then:{set:clockimage|{mediascripturl:
 tti time 40 500 black {jsonify:{py:import datetime
 
 def unix_to_clock_emoji(unix_ts):
@@ -21,7 +20,7 @@ rotate time 180
 render time
 }}}}
 
-{if:{arg:0}|=|thispc|then:{set:storageinfo|{py:
+{if:{get:sec}|=|3|then:{if:{arg:0}|=|thispc|then:{set:storageinfo|{py:
 import shutil
 
 total, used, free = shutil.disk_usage("/")
