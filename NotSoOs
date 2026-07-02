@@ -14,6 +14,7 @@ print(unix_to_clock_emoji({unixs}))
 }
 }
 resize time 1920 1080
+rotate time 180
 render time
 }}
 
