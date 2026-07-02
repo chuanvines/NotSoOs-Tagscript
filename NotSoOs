@@ -1,4 +1,4 @@
-{set:clockimage|{mediascripturl:
+{if:{arg:0}|=|clock|then:{set:clockimage|{mediascripturl:
 tti time 40 500 black {jsonify:{py:import datetime
 
 def unix_to_clock_emoji(unix_ts):
@@ -14,56 +14,27 @@ print(unix_to_clock_emoji({unixs}))
 }
 }
 resize time 1920 1080
+rotate time 180
 render time
-}}
+}}}}
 
-{set:storageinfo|{py:
+{if:{arg:0}|=|thispc|then:{set:storageinfo|{py:
 import shutil
 
-# Get storage information in GB
 total, used, free = shutil.disk_usage("/")
 total_gb = 8.5
 used_gb = used / (1024**3) / 205
 free_gb = free / (1024**3) / 205
 usage_percent = (used_gb / total_gb) * 100
 
-# Return storage data
-print(f"Total: {total_gb:.1f} GB, Used: {used_gb:.1f} GB, Free: {free_gb:.1f} GB, Usage: {usage_percent:.1f}%")
-}}
+print(f"{total_gb:.1f}|{used_gb:.1f}|{free_gb:.1f}|{usage_percent:.1f}")
+}}}}
 
-{set:totalstorage|{py:
-total_gb = 8.5
-print(f"{total_gb:.1f}")
-}}
+{if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥️ {usernick}","color":3447003}}}
 
-{set:usedstorage|{py:
-import shutil
-used = shutil.disk_usage("/")[1]
-used_gb = used / (1024**3) / 205
-print(f"{used_gb:.1f}")
-}}
+{if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥️ {usernick}","color":3447003}}}
 
-{set:freestorage|{py:
-import shutil
-free = shutil.disk_usage("/")[2]
-free_gb = free / (1024**3) / 205
-print(f"{free_gb:.1f}")
-}}
-
-{set:usagepercent|{py:
-import shutil
-total, used, free = shutil.disk_usage("/")
-total_gb = 8.5
-used_gb = used / (1024**3) / 205
-usage_percent = (used_gb / total_gb) * 100
-print(f"{usage_percent:.1f}")
-}}
-
-{if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
-
-{if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
-
-{if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image": {"url": "{get:clockimage}"}}}}
+{if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image":{"url":"{get:clockimage}"}}}}
 
 {if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"Files\n\n**hi.txt**\n**abc.txt** - Repository documentation","color":3447003}}}
 
@@ -71,37 +42,37 @@ print(f"{usage_percent:.1f}")
 
 {if:{arg:0}|=|open|then:{if:{arg:1}|=|abc.txt|then:{embedjson:{"title":"abc.txt","description":"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z","color":3447003}}}}
 
-{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {get:totalstorage} GB\n**Used Storage:** {get:usedstorage} GB\n**Free Storage:** {get:freestorage} GB\n**Usage:** {get:usagepercent}%","color":3447003}}}
+{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {substring:{get:storageinfo}|0|{indexof:|{get:storageinfo}}} GB\n**Used Storage:** {substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}} GB\n**Free Storage:** {substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}}} GB\n**Usage:** {substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{substring:{get:storageinfo}|{math:{indexof:|{get:storageinfo}}+1}|999}}+{indexof:|{get:storageinfo}}+1}|999}%","color":3447003}}}
 
 {if:{arg:0}|=|tagscript|then:{embedjson:{"title":"TagScript","description":"{eval:{args:1}}","color":3447003}}}
 
 {componentjson:
 {
-  "type": 1,
-  "components": [
+  "type":1,
+  "components":[
     {
-      "type": 2,
-      "style": 1,
-      "label": "Menu",
-      "run": "{ignore:{tag:{tagid}|menu}}"
+      "type":2,
+      "style":1,
+      "label":"Menu",
+      "run":"{ignore:{tag:{tagid}|menu}}"
     },
     {
-      "type": 2,
-      "style": 1,
-      "label": "🕒 Clock",
-      "run": "{ignore:{tag:{tagid}|clock}}"
+      "type":2,
+      "style":1,
+      "label":"🕒 Clock",
+      "run":"{ignore:{tag:{tagid}|clock}}"
     },
     {
-      "type": 2,
-      "style": 1,
-      "label": "📁 Files",
-      "run": "{ignore:{tag:{tagid}|files}}"
+      "type":2,
+      "style":1,
+      "label":"📁 Files",
+      "run":"{ignore:{tag:{tagid}|files}}"
     },
     {
-      "type": 2,
-      "style": 1,
-      "label": "🖥️ This PC",
-      "run": "{ignore:{tag:{tagid}|thispc}}"
+      "type":2,
+      "style":1,
+      "label":"🖥️ This PC",
+      "run":"{ignore:{tag:{tagid}|thispc}}"
     }
   ]
 }
