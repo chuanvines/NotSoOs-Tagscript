@@ -65,9 +65,15 @@ print(f"{usage_percent:.1f}")
 
 {if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image": {"url": "{get:clockimage}"}}}}
 
-{if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"📁 Repository Files\n\n**NotSoOs** - Main tag script file\n**README.md** - Repository documentation","color":3447003}}}
+{if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"Files\n\n**hi.txt**\n**abc.txt** - Repository documentation","color":3447003}}}
+
+{if:{arg:0}|=|open|then:{if:{arg:1}|=|hi.txt|then:{embedjson:{"title":"hi.txt","description":"hello","color":3447003}}}}
+
+{if:{arg:0}|=|open|then:{if:{arg:1}|=|abc.txt|then:{embedjson:{"title":"abc.txt","description":"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z","color":3447003}}}}
 
 {if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {get:totalstorage} GB\n**Used Storage:** {get:usedstorage} GB\n**Free Storage:** {get:freestorage} GB\n**Usage:** {get:usagepercent}%","color":3447003}}}
+
+{if:{arg:0}|=|tagscript|then:{embedjson:{"title":"TagScript","description":"{eval:{args:1}}","color":3447003}}}
 
 {componentjson:
 {
