@@ -5,11 +5,7 @@ def unix_to_clock_emoji(unix_ts):
     dt = datetime.datetime.fromtimestamp(unix_ts)
     hour = dt.hour % 12
     minute = dt.minute
-
-    # base offset for clock emojis
     base = 0x1F550
-
-    # each hour has 2 positions (on the hour and half past)
     position = hour * 2 + (1 if minute >= 30 else 0)
 
     return chr(base + position)
