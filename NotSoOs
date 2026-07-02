@@ -1,11 +1,31 @@
+{set:clockimage|{mediascripturl:
+tti time 40 500 black {jsonify:{py:import datetime
+
+def unix_to_clock_emoji(unix_ts):
+    dt = datetime.datetime.fromtimestamp(unix_ts)
+    hour = dt.hour % 12
+    minute = dt.minute
+
+base offset for clock emojis
+    base = 0x1F550
+
+each hour has 2 positions (on the hour and half past)
+    position = hour * 2 + (1 if minute >= 30 else 0)
+
+    return chr(base + position)
+
+print(unix_to_clock_emoji({unixs}))
+}
+}
+resize time 1920 1080
+render time
+}}
 
 {if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
 
 {if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
 
-{if:{arg:0}|=|clock|then:
-{embedjson:{"title":"hello","description":"world","color":16711680}}
-}
+{if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image": {"url": "{get:clockimage}"}}}}
 
 {componentjson:
 {
