@@ -67,7 +67,7 @@ print(f"{usage_percent:.1f}")
 
 {if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"📁 Repository Files\n\n**NotSoOs** - Main tag script file\n**README.md** - Repository documentation","color":3447003}}}
 
-{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {get:totalstorage} GB\n**Used Storage:** {get:usedstorage} GB\n**Free Storage:[...]
+{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {get:totalstorage} GB\n**Used Storage:** {get:usedstorage} GB\n**Free Storage:** {get:freestorage} GB\n**Usage:** {get:usagepercent}%","color":3447003}}}
 
 {componentjson:
 {
@@ -98,5 +98,6 @@ print(f"{usage_percent:.1f}")
       "run": "{ignore:{tag:{tagid}|thispc}}"
     }
   ]
+}
 }
 }
