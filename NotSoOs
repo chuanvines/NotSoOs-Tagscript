@@ -1,11 +1,7 @@
 
-{if:{arg:0}|=||then:
-{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}
-}
+{if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
 
-{if:{arg:0}|=|menu|then:
-{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}
-}
+{if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
 
 {if:{arg:0}|=|clock|then:
 {embedjson:{"title":"hello","description":"world","color":16711680}}
