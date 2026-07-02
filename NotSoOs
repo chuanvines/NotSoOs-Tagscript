@@ -9,7 +9,6 @@
 
 {if:{arg:0}|=|clock|then:
 {embedjson:{"title":"hello","description":"world","color":16711680}}
-
 }
 
 {componentjson:
