@@ -51,7 +51,7 @@ render time
       "type": 2,
       "style": 1,
       "label": "🖥️ This PC",
-      "run": "print('{ignore:{tag:{tagid}|thispc}}')"
+      "run": "{ignore:{tag:{tagid}|thispc}}"
     }
   ]
 }
