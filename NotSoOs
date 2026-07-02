@@ -17,6 +17,50 @@ resize time 1920 1080
 render time
 }}
 
+{set:storageinfo|{py:
+import shutil
+
+# Get storage information in GB
+total, used, free = shutil.disk_usage("/")
+total_gb = total / (1024**3)
+used_gb = used / (1024**3)
+free_gb = free / (1024**3)
+usage_percent = (used_gb / total_gb) * 100
+
+# Return storage data
+print(f"Total: {total_gb:.1f} GB, Used: {used_gb:.1f} GB, Free: {free_gb:.1f} GB, Usage: {usage_percent:.1f}%")
+}}
+
+{set:totalstorage|{py:
+import shutil
+total = shutil.disk_usage("/")[0]
+total_gb = total / (1024**3)
+print(f"{total_gb:.1f}")
+}}
+
+{set:usedstorage|{py:
+import shutil
+used = shutil.disk_usage("/")[1]
+used_gb = used / (1024**3)
+print(f"{used_gb:.1f}")
+}}
+
+{set:freestorage|{py:
+import shutil
+free = shutil.disk_usage("/")[2]
+free_gb = free / (1024**3)
+print(f"{free_gb:.1f}")
+}}
+
+{set:usagepercent|{py:
+import shutil
+total, used, free = shutil.disk_usage("/")
+total_gb = total / (1024**3)
+used_gb = used / (1024**3)
+usage_percent = (used_gb / total_gb) * 100
+print(f"{usage_percent:.1f}")
+}}
+
 {if:{arg:0}|=||then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
 
 {if:{arg:0}|=|menu|then:{embedjson:{"title":"NotSoOs V1.0","description":"🕒 Clock  📁 Files 🖥 {usernick}","color":3447003}}}
@@ -24,6 +68,8 @@ render time
 {if:{arg:0}|=|clock|then:{embedjson:{"title":"Clock","description":"{markuptime}","color":3447003,"image": {"url": "{get:clockimage}"}}}}
 
 {if:{arg:0}|=|files|then:{embedjson:{"title":"Files","description":"📁 Repository Files\n\n**NotSoOs** - Main tag script file\n**README.md** - Repository documentation","color":3447003}}}
+
+{if:{arg:0}|=|thispc|then:{embedjson:{"title":"This PC","description":"💾 Storage Information\n\n**Total Storage:** {get:totalstorage} GB\n**Used Storage:** {get:usedstorage} GB\n**Free Storage:** {get:freestorage} GB\n**Usage:** {get:usagepercent}%","color":3447003}}}
 
 {componentjson:
 {
