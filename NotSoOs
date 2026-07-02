@@ -1,3 +1,6 @@
+{set:unix|{unix}}
+{get:sec|{math:({unix}-{get:unix})/1000}}
+
 {if:{arg:0}|=|clock|then:{set:clockimage|{mediascripturl:
 tti time 40 500 black {jsonify:{py:import datetime
 
@@ -46,7 +49,7 @@ print(f"{total_gb:.1f}|{used_gb:.1f}|{free_gb:.1f}|{usage_percent:.1f}")
 
 {if:{arg:0}|=|tagscript|then:{embedjson:{"title":"TagScript","description":"{eval:{args:1}}","color":3447003}}}
 
-{componentjson:
+{if:{get:sec}|=|3|then:{componentjson:
 {
   "type":1,
   "components":[
@@ -75,5 +78,6 @@ print(f"{total_gb:.1f}|{used_gb:.1f}|{free_gb:.1f}|{usage_percent:.1f}")
       "run":"{ignore:{tag:{tagid}|thispc}}"
     }
   ]
+}
 }
 }
